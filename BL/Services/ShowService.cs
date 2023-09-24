@@ -26,13 +26,35 @@ namespace BL.Services
             return new ShowDTO
             {
                 ShowId = show.ShowId,
-                Genre = show.Genre,
+                RunningTimeInMinutes = show.RunningTimeInMinutes,
                 Title = show.Title,
-                ReleaseYear = show.ReleaseYear,
+                ReleasedYear = show.ReleasedYear,
                 ImdbId = show.ImdbId,
-                Poster = show.Poster,
+                ImageUrl = show.ImageUrl,
                 IsWatched = show.IsWatched,
-                Type = show.Type,
+                Type = show.TitleType,
+                NextEpisodeId = show.NextEpisodeId,
+                NumberOfEpisodes = show.NumberOfEpisodes,
+            };
+        }
+        public async Task<ShowDTO> GetShowById(int id)
+        {
+            var show = await _showRepository.GetShowById(id);
+
+            if (show == null) return null;
+
+            return new ShowDTO
+            {
+                ShowId = show.ShowId,
+                RunningTimeInMinutes = show.RunningTimeInMinutes,
+                Title = show.Title,
+                ReleasedYear = show.ReleasedYear,
+                ImdbId = show.ImdbId,
+                ImageUrl = show.ImageUrl,
+                IsWatched = show.IsWatched,
+                Type = show.TitleType,
+                NextEpisodeId = show.NextEpisodeId,
+                NumberOfEpisodes = show.NumberOfEpisodes,
             };
         }
         public async Task<IEnumerable<ShowDTO>> GetShowByProfileId(int ProfileId)
@@ -41,13 +63,15 @@ namespace BL.Services
             return shows.Select(x => new ShowDTO
             {
                 ShowId = x.ShowId,
-                Genre = x.Genre,
+                RunningTimeInMinutes = x.RunningTimeInMinutes,
                 Title = x.Title,
-                ReleaseYear = x.ReleaseYear,
+                ReleasedYear = x.ReleasedYear,
                 ImdbId = x.ImdbId,
-                Poster = x.Poster,
+                ImageUrl = x.ImageUrl,
                 IsWatched = x.IsWatched,
-                Type = x.Type,
+                Type = x.TitleType,
+                NextEpisodeId = x.NextEpisodeId,
+                NumberOfEpisodes = x.NumberOfEpisodes,
             });
         }
         public async Task SaveShow(ShowInformationDTO showInformationDTO)
@@ -55,13 +79,14 @@ namespace BL.Services
             await _showRepository.SaveShow(new Show
             {
                 ProfileId = showInformationDTO.ProfileId,
-                Genre = showInformationDTO.Genre,
+                RunningTimeInMinutes = showInformationDTO.RunningTimeInMinutes,
                 Title = showInformationDTO.Title,
-                ReleaseYear = showInformationDTO.ReleaseYear,
+                ReleasedYear = showInformationDTO.ReleasedYear,
                 ImdbId = showInformationDTO.ImdbId,
-                Poster = showInformationDTO.Poster,
-                IsWatched = showInformationDTO.IsWatched,
-                Type = showInformationDTO.Type,
+                ImageUrl = showInformationDTO.ImageUrl,
+                TitleType = showInformationDTO.Type,
+                NextEpisodeId = showInformationDTO.NextEpisodeId,
+                NumberOfEpisodes = showInformationDTO.NumberOfEpisodes,
             });
         }
         public async Task<bool> DeleteShow(int showId)

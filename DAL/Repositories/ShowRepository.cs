@@ -23,6 +23,11 @@ namespace DAL.Repositories
             return await _databaseContext.Shows.FirstOrDefaultAsync(x => x.ImdbId == imdbId);
 
         }
+        public async Task<Show> GetShowById(int id)
+        {
+            return await _databaseContext.Shows.FirstOrDefaultAsync(x => x.ShowId == id);
+
+        }
         public async Task<List<Show>> GetShowByProfileId(int ProfileId)
         {
             var shows = await _databaseContext.Shows.Where(x => x.ProfileId == ProfileId).ToListAsync();

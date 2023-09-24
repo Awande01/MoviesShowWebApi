@@ -11,6 +11,7 @@ namespace DAL.Interface
     {
         Task<Show> GetShowByImdbId(string imdbId);
         Task<List<Show>> GetShowByProfileId(int ProfileId);
+        Task<Show> GetShowById(int id);
         Task SaveShow(Show showObj);
         Task<bool> DeleteShow(int showId);
         Task<bool> UpdateShow(int showId, bool isWatched);

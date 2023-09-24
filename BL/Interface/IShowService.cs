@@ -12,6 +12,7 @@ namespace BL.Interface
     {
         Task<ShowDTO> GetShowByImdbId(string imdbId);
         Task<IEnumerable<ShowDTO>> GetShowByProfileId(int ProfileId);
+        Task<ShowDTO> GetShowById(int id);
         Task SaveShow(ShowInformationDTO showInformationDTO);
         Task<bool> DeleteShow(int showId);
         Task<bool> UpdateShow(int showId, bool isWatched);

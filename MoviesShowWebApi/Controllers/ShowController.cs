@@ -46,7 +46,20 @@ namespace MoviesShowWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        // GET api/<ShowController>/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetShow([FromRoute] int id)
+        {
+            try
+            {
+                var result = await _showService.GetShowById(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         // POST api/<ShowController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ShowInformationDTO showInformationDTO)
