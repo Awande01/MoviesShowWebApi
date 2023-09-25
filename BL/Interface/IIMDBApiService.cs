@@ -9,6 +9,6 @@ namespace BL.Interface
 {
     public interface IIMDBApiService
     {
-        Task<IMDBApiResponses> GetShowsAsync(string searchKey);
+        Task<IEnumerable<results>> GetShowsAsync(string searchKey);
     }
 }

@@ -67,8 +67,8 @@ namespace MoviesShowWebApi.Controllers
             try
             {
                 if (showInformationDTO == null) return BadRequest();
-                await _showService.SaveShow(showInformationDTO);
-                return Ok("Show saved successfully");
+                var result = await _showService.SaveShow(showInformationDTO);
+                return Json(result);
             }
             catch (Exception ex)
             {

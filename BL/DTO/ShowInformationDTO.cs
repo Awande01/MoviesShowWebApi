@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,17 @@ namespace BL.DTO
     public class ShowInformationDTO
     {
         public int ProfileId { get; set; }
-        public string Title { get; set; }
-        public long ReleasedYear { get; set; }
-        public string ImdbId { get; set; }
-        public string Type { get; set; }
-        public string ImageUrl { get; set; } = string.Empty;
+        public string id { get; set; }
+        public image image { get; set; } = new image();
         public int? RunningTimeInMinutes { get; set; }
-        public int? NextEpisodeId { get; set; }
-        public int? NumberOfEpisodes { get; set; }
+        public string NextEpisode { get; set; } = string.Empty;
+        public int NumberOfEpisodes { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public int? Season { get; set; }
+        public int? Episode { get; set; }
+        public string TitleType { get; set; } = string.Empty;
+        public long Year { get; set; }
+        public parentTitle ParentTitle { get; set; } = new parentTitle();
         public bool? IsWatched { get; set; }
     }
 }

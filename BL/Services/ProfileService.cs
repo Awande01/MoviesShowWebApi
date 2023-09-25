@@ -1,5 +1,6 @@
 ﻿using BL.DTO;
 using BL.Interface;
+using DAL.Data;
 using DAL.Interface;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,11 @@ namespace BL.Services
                 UserName = profile.UserName, 
                 ProfileId = profile.ProfileId,
             };
+        }
+        public async Task<Profile> GetUserProfileById(int id)
+        {
+            return await _profileRepository.GetUserProfileById(id);
+
         }
     }
 }

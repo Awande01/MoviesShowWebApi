@@ -10,5 +10,6 @@ namespace DAL.Interface
     public interface IProfileRepository
     {
         Task<Profile> GetUserProfile(string userName, string password);
+        Task<Profile> GetUserProfileById(int id);
     }
 }

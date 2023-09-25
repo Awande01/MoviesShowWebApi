@@ -16,10 +16,26 @@ namespace BL.Services
             _IMDBApi = iMDBApi;
         }
 
-        public async Task<IMDBApiResponses> GetShowsAsync(string searchKey)
+        public async Task<IEnumerable<results>> GetShowsAsync(string searchKey)
         {
             var result = await _IMDBApi.GetShowAsync("/title/find?q=" + searchKey);
-            return result;
+
+            return result.results.Select(x => new results
+            {
+                id = x.id,
+                image = x.image,
+                runningTimeInMinutes = x.runningTimeInMinutes,
+                nextEpisode = x.nextEpisode,
+                numberOfEpisodes = x.numberOfEpisodes,
+                seriesStartYear = x.seriesStartYear,
+                title = x.title,
+                season = x.season,
+                episode = x.episode,
+                titleType = x.titleType,
+                year = x.year,
+                parentTitle = x.parentTitle,
+
+            }).ToList(); 
         }
     }
 }

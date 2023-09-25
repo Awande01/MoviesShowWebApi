@@ -19,14 +19,20 @@ namespace MoviesShowWebApi.Controllers
 
         // GET: api/<ProfileController>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] string username,[FromQuery] string password)
+        public async Task<IActionResult> Get([FromQuery] string username, [FromQuery] string password)
         {
             var result = await _profileService.GetUserProfile(username, password);
-            if (result == null) return NotFound();
 
             return Ok(result);
         }
+        // GET: api/<ProfileController>
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get([FromRoute] int id)
+        {
+            var result = await _profileService.GetUserProfileById(id);
 
+            return Ok(result);
+        }
         // POST api/<ProfileController>
         [HttpPost]
         public void Post([FromBody] string value)

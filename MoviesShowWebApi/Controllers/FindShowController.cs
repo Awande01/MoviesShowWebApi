@@ -21,17 +21,16 @@ namespace MoviesShowWebApi.Controllers
         {
             try
             {
-                if(string.IsNullOrEmpty(searchKey)) return BadRequest();
+                if(string.IsNullOrEmpty(searchKey)) return Ok(null);
 
                 var results = await _iMDBApiService.GetShowsAsync(searchKey);
 
-                return Ok(results);
+                return Json(results);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
     }
 }
