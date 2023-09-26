@@ -141,12 +141,12 @@ namespace BL.Services
                 {
                     var imdbId = GetImbdId(showExist.NextEpisodeId);
                     var nextepisode = await _iMDBApiService.GetShowsAsync(imdbId);
-                    return $"you already added and watched the {showExist.Title}. Please search and watch the next episode : {nextepisode.FirstOrDefault().title ?? ""}";
+                    return $"you already added and watched the {showExist.Title}. Please search  the next episode : {nextepisode.FirstOrDefault().title ?? ""}";
                 }
-                return $"you already added and watched the {showExist.Title}  {showExist.TitleType}.";
+                return $"you already added and watched the {showExist.Title}  - {showExist.TitleType}.";
             }
 
-           return $"you already added the {showExist.Title}  {showExist.TitleType} but not yet watched";
+           return $"you already added the {showExist.Title}  - {showExist.TitleType} but not yet watched";
 
         }
 
