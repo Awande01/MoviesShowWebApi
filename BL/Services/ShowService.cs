@@ -115,7 +115,7 @@ namespace BL.Services
                 ParentReleasedYear = showInformationDTO.ParentTitle.year,
                 EpisodeNumber = showInformationDTO.Episode,
             });
-            message = $"{showInformationDTO.TitleType} saved successfully ";
+            message = $"{showInformationDTO.Title} saved successfully";
             return message;
         }
         public async Task<bool> DeleteShow(int showId)
@@ -141,7 +141,7 @@ namespace BL.Services
                 {
                     var imdbId = GetImbdId(showExist.NextEpisodeId);
                     var nextepisode = await _iMDBApiService.GetShowsAsync(imdbId);
-                    return $"you already added and watched the {showExist.Title}. Please watch the next episode : {nextepisode.FirstOrDefault().title ?? ""}";
+                    return $"you already added and watched the {showExist.Title}. Please search and watch the next episode : {nextepisode.FirstOrDefault().title ?? ""}";
                 }
                 return $"you already added and watched the {showExist.Title}  {showExist.TitleType}.";
             }
